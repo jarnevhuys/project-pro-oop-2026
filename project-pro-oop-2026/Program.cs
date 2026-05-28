@@ -35,3 +35,12 @@ namespace Solution_Scrabble
         }
     }
 }
+
+//klassen
+public class Woord
+{
+    //accessor, mutator (get, set)
+    public int totaalAantalKarakters {get; set; }
+    public int totaalWaardeKarakters {get; set; }
+
+}
