@@ -16,13 +16,8 @@ namespace Solution_Scrabble
             Console.WriteLine("Geef een woord of zin in:");
             input = Console.ReadLine();
 
-            // BASIS
-            foreach (char c in input)
-            {
-                totaalAantalKarakters++;
-            }
-
-            Console.WriteLine("Aantal karakters: " + totaalAantalKarakters);
+            //Aanroepen Methode/Functie
+            Woord.BerekenKarakters(input, totaalAantalKarakters);
 
             // UITBREIDING
             Random random = new Random();
@@ -44,5 +39,16 @@ public class Woord
     public string input { get; set; }
     public int totaalAantalKarakters {get; set; }
     public int totaalWaardeKarakters {get; set; }
+
+    //methoden, functies
+    public void BerekenKarakters(string input, int totaalAantalKarakters)
+    {
+        foreach (char c in input)
+        {
+            totaalAantalKarakters++;
+        }
+
+        Console.WriteLine("Aantal karakters: " + totaalAantalKarakters);
+    }
 
 }
