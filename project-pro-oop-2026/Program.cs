@@ -6,7 +6,8 @@ namespace Solution_Scrabble
     {
         static void Main(string[] args)
         {
-            // VARIABELEN
+            //Objecten, Variabelen
+            Woord Woord = new Woord();
             string input = "";
             int totaalAantalKarakters = 0;
             int totaalWaardeKarakters = 0;
@@ -40,6 +41,7 @@ namespace Solution_Scrabble
 public class Woord
 {
     //accessor, mutator (get, set)
+    public string input { get; set; }
     public int totaalAantalKarakters {get; set; }
     public int totaalWaardeKarakters {get; set; }
 
