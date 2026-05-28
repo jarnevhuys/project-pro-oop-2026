@@ -32,8 +32,17 @@ namespace Solution_Scrabble
     }
 }
 
+//interface
+interface iKarakterTeller
+{
+    string input { get; set; }
+    int totaalAantalKarakters { get; set; }
+    int totaalWaardeKarakters { get; set; }
+    void BerekenKarakters(string input, int totaalAantalKarakters);
+}
+
 //klassen
-public class Woord
+public class Woord: iKarakterTeller
 {
     //accessor, mutator (get, set)
     public string input { get; set; }
