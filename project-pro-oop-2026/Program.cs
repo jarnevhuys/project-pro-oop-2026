@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 
 namespace Solution_Scrabble
 {
@@ -6,24 +7,37 @@ namespace Solution_Scrabble
     {
         static void Main(string[] args)
         {
-            //Object aanmaken
-            Woord Woord = new Woord();
+            //TRY CATCH THROW
+            try
+            {
+                //OBJECT AANMAKEN
+                Woord Woord = new Woord();
 
-            // INPUT
-            Console.WriteLine("Geef een woord of zin in:");
-            Woord.input = Console.ReadLine();
+                // INPUT
+                Console.WriteLine("Geef een woord of zin in:");
+                Woord.input = Console.ReadLine();
 
-            //Aanroepen Methode/Functie (basis)
-            Woord.BerekenKarakters(Woord.input, Woord.totaalAantalKarakters);
+                //THROW
+                if (Woord.input == "")
+                {
+                    throw new Exception("Je moet een woord ingeven.");
+                }
 
-            //Aanroepen Methode/Fucntie (uitbreiding)
-            Woord.BerekenWaarde(Woord.input, Woord.totaalWaardeKarakters);
-            
+                //AANROEPEN METHODES/FUNCTIES (BASIS)
+                Woord.BerekenKarakters(Woord.input, Woord.totaalAantalKarakters);
+
+                //AANROEPEN METHODES/FUNCTIES (UITBREIDING)
+                Woord.BerekenWaarde(Woord.input, Woord.totaalWaardeKarakters);
+            }
+            catch (Exception fout)
+            {
+                Console.WriteLine(fout.Message);
+            }
         }
     }
 }
 
-//interface
+//INTERFACE
 interface iKarakterTeller
 {
     string input { get; set; }
@@ -32,15 +46,15 @@ interface iKarakterTeller
     void BerekenKarakters(string input, int totaalAantalKarakters);
 }
 
-//klassen
+//KLASSEN
 public class Woord : iKarakterTeller
 {
-    //accessor, mutator (get, set)
+    //ACCESSOR, MUTATOR (GET, SET)
     public string input { get; set; }
     public int totaalAantalKarakters { get; set; }
     public int totaalWaardeKarakters { get; set; }
 
-    // Constructor
+    // CONSTRUCTOR
     public Woord()
     {
         input = "";
@@ -50,7 +64,7 @@ public class Woord : iKarakterTeller
         Console.WriteLine("Spel opgestart!");
     }
 
-    //methoden, functies
+    //METHODES/FUNCTIES
     public void BerekenKarakters(string input, int totaalAantalKarakters)
     {
         foreach (char c in input)
@@ -61,7 +75,7 @@ public class Woord : iKarakterTeller
         Console.WriteLine("Aantal karakters: " + totaalAantalKarakters);
     }
 
-    //methoden, fucnties
+    //METHODES/FUNCTIES
     public void BerekenWaarde(string input, int totaalWaardeKarakters)
     {
         Random random = new Random();
