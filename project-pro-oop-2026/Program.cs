@@ -16,15 +16,9 @@ namespace Solution_Scrabble
             //Aanroepen Methode/Functie (basis)
             Woord.BerekenKarakters(Woord.input, Woord.totaalAantalKarakters);
 
-            // UITBREIDING
-            Random random = new Random();
-
-            foreach (char c in Woord.input)
-            {
-                Woord.totaalWaardeKarakters += random.Next(0, 26);
-            }
-
-            Console.WriteLine("Totale waarde: " + Woord.totaalWaardeKarakters);
+            //Aanroepen Methode/Fucntie (uitbreiding)
+            Woord.BerekenWaarde(Woord.input, Woord.totaalWaardeKarakters);
+            
         }
     }
 }
@@ -39,12 +33,12 @@ interface iKarakterTeller
 }
 
 //klassen
-public class Woord: iKarakterTeller
+public class Woord : iKarakterTeller
 {
     //accessor, mutator (get, set)
     public string input { get; set; }
-    public int totaalAantalKarakters {get; set; }
-    public int totaalWaardeKarakters {get; set; }
+    public int totaalAantalKarakters { get; set; }
+    public int totaalWaardeKarakters { get; set; }
 
     // Constructor
     public Woord()
@@ -53,7 +47,7 @@ public class Woord: iKarakterTeller
         totaalAantalKarakters = 0;
         totaalWaardeKarakters = 0;
 
-        Console.WriteLine("Woord succesvol aangemaakt!");
+        Console.WriteLine("Spel opgestart!");
     }
 
     //methoden, functies
@@ -65,6 +59,19 @@ public class Woord: iKarakterTeller
         }
 
         Console.WriteLine("Aantal karakters: " + totaalAantalKarakters);
+    }
+
+    //methoden, fucnties
+    public void BerekenWaarde(string input, int totaalWaardeKarakters)
+    {
+        Random random = new Random();
+
+        foreach (char c in input)
+        {
+            totaalWaardeKarakters += random.Next(0, 26);
+        }
+
+        Console.WriteLine("Totale waarde: " + totaalWaardeKarakters);
     }
 
 }
