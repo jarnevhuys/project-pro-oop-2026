@@ -37,20 +37,22 @@ namespace Solution_Scrabble
     }
 }
 
-//INTERFACE
+//INTERFACE (ABSTRACTIE)
 interface iKarakterTeller
 {
-    string input { get; set; }
-    int totaalAantalKarakters { get; set; }
-    int totaalWaardeKarakters { get; set; }
     void BerekenKarakters(string input, int totaalAantalKarakters);
+    void BerekenWaarde(string input, int totaalWaardeKarakters);
 }
 
-//KLASSEN
-public class Woord : iKarakterTeller
+//KLASSEN (OVERERVING) (ACCESSOR, MUTATOR (GET, SET)) (ENCAPSULATIE)
+public class Tekst
 {
-    //ACCESSOR, MUTATOR (GET, SET)
     public string input { get; set; }
+}
+//KLASSEN
+public class Woord : Tekst, iKarakterTeller
+{
+    //ACCESSOR, MUTATOR (GET, SET) (ENCAPSULATIE)
     public int totaalAantalKarakters { get; set; }
     public int totaalWaardeKarakters { get; set; }
 
