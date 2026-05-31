@@ -6,28 +6,25 @@ namespace Solution_Scrabble
     {
         static void Main(string[] args)
         {
-            //Objecten, Variabelen
+            //Object aanmaken
             Woord Woord = new Woord();
-            string input = "";
-            int totaalAantalKarakters = 0;
-            int totaalWaardeKarakters = 0;
 
             // INPUT
             Console.WriteLine("Geef een woord of zin in:");
-            input = Console.ReadLine();
+            Woord.input = Console.ReadLine();
 
-            //Aanroepen Methode/Functie
-            Woord.BerekenKarakters(input, totaalAantalKarakters);
+            //Aanroepen Methode/Functie (basis)
+            Woord.BerekenKarakters(Woord.input, Woord.totaalAantalKarakters);
 
             // UITBREIDING
             Random random = new Random();
 
-            foreach (char c in input)
+            foreach (char c in Woord.input)
             {
-                totaalWaardeKarakters += random.Next(0, 26);
+                Woord.totaalWaardeKarakters += random.Next(0, 26);
             }
 
-            Console.WriteLine("Totale waarde: " + totaalWaardeKarakters);
+            Console.WriteLine("Totale waarde: " + Woord.totaalWaardeKarakters);
         }
     }
 }
@@ -48,6 +45,16 @@ public class Woord: iKarakterTeller
     public string input { get; set; }
     public int totaalAantalKarakters {get; set; }
     public int totaalWaardeKarakters {get; set; }
+
+    // Constructor
+    public Woord()
+    {
+        input = "";
+        totaalAantalKarakters = 0;
+        totaalWaardeKarakters = 0;
+
+        Console.WriteLine("Woord succesvol aangemaakt!");
+    }
 
     //methoden, functies
     public void BerekenKarakters(string input, int totaalAantalKarakters)
