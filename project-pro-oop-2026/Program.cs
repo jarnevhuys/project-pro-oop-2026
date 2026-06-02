@@ -26,12 +26,18 @@ namespace Solution_Scrabble
                 //Roept de (METHODE) op die het aantal karakters telt (basis)
                 woord.BerekenKarakters(woord.Input, woord.TotaalAantalKarakters);
 
-                //Roept de (METHODE) op die een totale waarde berkeent (uitbreiding)
+                //Roept de (METHODE) op die een totale waarde berekent (uitbreiding)
                 woord.BerekenWaarde(woord.Input, woord.TotaalWaardeKarakters);
 
-                //Gebruikt (POLYMORFISME) en roept spelmodus aan
+                //Vraagt een spelmodus en controleert of de spelmodus klopt
                 Console.WriteLine("Kies mode: normal / hard / extreme");
                 string mode = Console.ReadLine();
+
+                if (mode != "normal" && mode != "hard" && mode != "extreme")
+                {
+                    Console.WriteLine("Ongelde spelmode gekozen");
+                    return;
+                }
 
                 //Roept een (OVERLOAD) methode op met extra parameter (POLYMORFISME
                 woord.BerekenWaarde(woord.Input, woord.TotaalWaardeKarakters, mode);
