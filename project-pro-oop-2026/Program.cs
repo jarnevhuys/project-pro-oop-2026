@@ -7,65 +7,70 @@ namespace Solution_Scrabble
     {
         static void Main(string[] args)
         {
-            //TRY CATCH THROW
+            //(TRY CATCH) vangt fouten op zodat het programma niet crasht
             try
             {
-                //OBJECT AANMAKEN
+                //(OBJECT AANMAKEN) van klasse woord
                 Woord woord = new Woord();
 
-                // INPUT
+                // vraagt (INPUT) aan de gebuiker
                 Console.WriteLine("Geef een woord of zin in:");
                 woord.Input = Console.ReadLine();
 
-                //THROW
+                //(THROW) gooit een fout weg als de gebruiker niks invoert
                 if (woord.Input == "")
                 {
                     throw new Exception("Je moet een woord ingeven.");
                 }
 
-                //AANROEPEN METHODES/FUNCTIES (BASIS)
+                //Roept de (METHODE) op die het aantal karakters telt (basis)
                 woord.BerekenKarakters(woord.Input, woord.TotaalAantalKarakters);
 
-                //AANROEPEN METHODES/FUNCTIES (UITBREIDING)
+                //Roept de (METHODE) op die een totale waarde berkeent (uitbreiding)
                 woord.BerekenWaarde(woord.Input, woord.TotaalWaardeKarakters);
 
-                //POLYMORFISME AANROEPEN
+                //Gebruikt (POLYMORFISME) en roept spelmodus aan
                 Console.WriteLine("Kies mode: normal / hard / extreme");
                 string mode = Console.ReadLine();
+
+                //Roept een (OVERLOAD) methode op met extra parameter (POLYMORFISME
                 woord.BerekenWaarde(woord.Input, woord.TotaalWaardeKarakters, mode);
             }
             catch (Exception fout)
             {
+                //Toont de foutemelding aan de gebruiker.
                 Console.WriteLine(fout.Message);
             }
         }
     }
 }
 
-//INTERFACE (ABSTRACTIE)
+//(INTERFACE) bepaalt welke methodes verplicht aanwzeig moeten zijn (ABSTRACTIE)
 interface iKarakterTeller
 {
     void BerekenKarakters(string Input, int TotaalAantalKarakters);
-    //NORMALE BEREKENING
+    //Methode voor normale berekening
     void BerekenWaarde(string Input, int TotaalWaardeKarakters);
 
-    //POLYMORFISME BEREKENING (OVERLOADING)
+    //Methode voor (POLYMORFISME)
     void BerekenWaarde(string Input, int TotaalWaardeKarakters, string Mode);
 }
 
-//KLASSEN (OVERERVING) (ACCESSOR, MUTATOR (GET, SET)) (ENCAPSULATIE)
+//(KLASSEN) aanmaken
 public class Tekst
 {
+    //(AUTO-PROPERTY)met (ACCESSOR, MUTATOR) om invoer opslaat (ENCAPSULATIE)
     public string Input { get; set; }
 }
-//KLASSEN
+
+//(KLASSEN) aanmaken en woord (ERFT) eigenschappen van Tekst en implenteert ook de (INTERFACE) (OVERERVING)
 public class Woord : Tekst, iKarakterTeller
 {
-    //ACCESSOR, MUTATOR (GET, SET) (ENCAPSULATIE)
+    //Properties voor oplsaan van resultaten (ACCESSOR, MUTATOR) (AUTO-PROPERTIES) (ENCAPSULATIE)
     public int TotaalAantalKarakters { get; set; }
     public int TotaalWaardeKarakters { get; set; }
 
-    // CONSTRUCTOR
+    // (CONSTRUCTOR) geeft de eigenschappen van de beginwaarden van het object
     public Woord()
     {
         Input = "";
@@ -75,7 +80,7 @@ public class Woord : Tekst, iKarakterTeller
         Console.WriteLine("Spel opgestart!");
     }
 
-    //METHODES/FUNCTIES
+    //(METHODE) telkt het aantal karakters
     public void BerekenKarakters(string Input, int TotaalAantalKarakters)
     {
         foreach (char c in Input)
@@ -86,7 +91,7 @@ public class Woord : Tekst, iKarakterTeller
         Console.WriteLine("Aantal karakters: " + TotaalAantalKarakters);
     }
 
-    //METHODES/FUNCTIES
+    //(METHODE) berekent random waarde
     public void BerekenWaarde(string Input, int TotaalWaardeKarakters)
     {
         Random random = new Random();
@@ -99,7 +104,7 @@ public class Woord : Tekst, iKarakterTeller
         Console.WriteLine("Totale waarde: " + TotaalWaardeKarakters);
     }
 
-    //POLYMORFISME (OVERLOADING)
+    //POLYMORFISME door gebruik van game modes (OVERLOADING)
     public void BerekenWaarde(string Input, int TotaalWaardeKarakters, string Mode)
     {
         Random random = new Random();
