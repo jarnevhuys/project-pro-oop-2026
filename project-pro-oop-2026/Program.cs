@@ -15,6 +15,7 @@ namespace Solution_Scrabble
 
                 // vraagt (INPUT) aan de gebuiker
                 Console.WriteLine("Geef een woord of zin in:");
+                Console.WriteLine("------------------------");
                 woord.Input = Console.ReadLine();
 
                 //(THROW) gooit een fout weg als de gebruiker niks invoert
@@ -30,12 +31,17 @@ namespace Solution_Scrabble
                 woord.BerekenWaarde(woord.Input, woord.TotaalWaardeKarakters);
 
                 //Vraagt een spelmodus en controleert of de spelmodus klopt
+                Console.WriteLine("Speel nu met een mode");
+                Console.WriteLine("------------------------");
                 Console.WriteLine("Kies mode: normal / hard / extreme");
+                Console.WriteLine("------------------------");
                 string mode = Console.ReadLine();
 
                 if (mode != "normal" && mode != "hard" && mode != "extreme")
                 {
+                    Console.WriteLine("------------------------");
                     Console.WriteLine("Ongelde spelmode gekozen");
+                    Console.WriteLine("------------------------");
                     return;
                 }
 
@@ -83,6 +89,7 @@ public class Woord : Tekst, iKarakterTeller
         TotaalAantalKarakters = 0;
         TotaalWaardeKarakters = 0;
 
+        Console.WriteLine("------------------------");
         Console.WriteLine("Spel opgestart!");
     }
 
@@ -94,6 +101,7 @@ public class Woord : Tekst, iKarakterTeller
             TotaalAantalKarakters++;
         }
 
+        Console.WriteLine("------------------------");
         Console.WriteLine("Aantal karakters: " + TotaalAantalKarakters);
     }
 
@@ -108,6 +116,7 @@ public class Woord : Tekst, iKarakterTeller
         }
 
         Console.WriteLine("Totale waarde: " + TotaalWaardeKarakters);
+        Console.WriteLine("------------------------");
     }
 
     //POLYMORFISME door gebruik van game modes (OVERLOADING)
@@ -128,8 +137,10 @@ public class Woord : Tekst, iKarakterTeller
         {
             TotaalWaardeKarakters *= 3;
         }
+        Console.WriteLine("------------------------");
         Console.WriteLine("Mode: " + Mode);
         Console.WriteLine("Totale waarde:" + TotaalWaardeKarakters);
+        Console.WriteLine("------------------------");
     }
 
 }
