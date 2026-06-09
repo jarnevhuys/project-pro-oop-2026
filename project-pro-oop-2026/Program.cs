@@ -58,7 +58,7 @@ namespace Solution_Scrabble
 }
 
 //(INTERFACE) bepaalt welke methodes verplicht aanwzeig moeten zijn (ABSTRACTIE)
-interface iKarakterTeller
+interface iBereken
 {
     void BerekenKarakters(string Input, int TotaalAantalKarakters);
     //Methode voor normale berekening
@@ -76,7 +76,7 @@ public class Tekst
 }
 
 //(KLASSEN) aanmaken en woord (ERFT) eigenschappen van Tekst en implenteert ook de (INTERFACE) (OVERERVING)
-public class Woord : Tekst, iKarakterTeller
+public class Woord : Tekst, iBereken
 {
     //Properties voor oplsaan van resultaten (ACCESSOR, MUTATOR) (AUTO-PROPERTIES) (ENCAPSULATIE)
     public int TotaalAantalKarakters { get; set; }
