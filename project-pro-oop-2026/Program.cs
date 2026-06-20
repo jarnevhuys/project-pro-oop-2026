@@ -79,8 +79,8 @@ public class Tekst
 public class Woord : Tekst, iBereken
 {
     //Properties voor oplsaan van resultaten (ACCESSOR, MUTATOR) (AUTO-PROPERTIES) (ENCAPSULATIE)
-    public int TotaalAantalKarakters { get; set; }
-    public int TotaalWaardeKarakters { get; set; }
+    public int TotaalAantalKarakters { get; private set; }
+    public int TotaalWaardeKarakters { get; private set; }
 
     // (CONSTRUCTOR) geeft de eigenschappen van de beginwaarden van het object
     public Woord()
