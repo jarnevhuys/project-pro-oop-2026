@@ -7,7 +7,7 @@ namespace Solution_Scrabble
     {
         static void Main(string[] args)
         {
-            //(TRY CATCH) vangt fouten op zodat het programma niet crasht
+            //(TRY CATCH) probeert code en vangt fouten op zodat het programma niet crasht
             try
             {
                 //(OBJECT AANMAKEN) van klasse woord
@@ -37,6 +37,7 @@ namespace Solution_Scrabble
                 Console.WriteLine("------------------------");
                 string mode = Console.ReadLine();
 
+                //zorgt dat je enkel normal, hard of extreme kan gebruiken.
                 if (mode != "normal" && mode != "hard" && mode != "extreme")
                 {
                     Console.WriteLine("------------------------");
@@ -45,7 +46,7 @@ namespace Solution_Scrabble
                     return;
                 }
 
-                //Roept een (OVERLOAD) methode op met extra parameter (POLYMORFISME
+                //Roept een (OVERLOAD) methode op met extra parameter (POLYMORFISME)
                 woord.BerekenWaarde(woord.Input, woord.TotaalWaardeKarakters, mode);
             }
             catch (Exception fout)
@@ -93,7 +94,7 @@ public class Woord : Tekst, iBereken
         Console.WriteLine("Spel opgestart!");
     }
 
-    //(METHODE) telkt het aantal karakters
+    //(METHODE) telt het aantal karakters
     public void BerekenKarakters(string Input, int TotaalAantalKarakters)
     {
         foreach (char c in Input)
